@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "MaxAuthorizedRu": "10000",
+    "MinAuthorizedRu": "400",
+    "EndpointUrl": "https://<COSMOS_DB_ENV>.documents.azure.com:443/",
+    "AuthorizationKey": "<AUTH_KEY>",
+    "DatabaseName": "<DB_NAME>",
+    "CollectionName": "<COLL_NAME>"
+  }
+}
