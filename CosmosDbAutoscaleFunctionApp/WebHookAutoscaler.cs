@@ -51,18 +51,18 @@ namespace CosmosDbAutoscaleFunctionApp
                     .AsEnumerable()
                     .SingleOrDefault();
                 int newThroughput = 0;
-                var currentThrouput = offer.Content.OfferThroughput;
+                var currentThroughput = offer.Content.OfferThroughput;
 
                 if (action.Equals(_scaleUp, StringComparison.InvariantCultureIgnoreCase))
                 {
                     // Note: trigger this operation from the Alerts view in Cosmos DB, based on the number of throttle requests
-                    if (currentThrouput * 2 <= _maxAuthorizedRu)
+                    if (currentThroughput * 2 <= _maxAuthorizedRu)
                     {
-                        newThroughput = currentThrouput * 2;
+                        newThroughput = currentThroughput * 2;
                     }
-                    else if (currentThrouput + 1 <= _maxAuthorizedRu)
+                    else if (currentThroughput + 1 <= _maxAuthorizedRu)
                     {
-                        newThroughput = currentThrouput + 1;
+                        newThroughput = currentThroughput + 1;
                     }
                     else
                     {
@@ -72,13 +72,13 @@ namespace CosmosDbAutoscaleFunctionApp
                 else if(action.Equals(_scaleDown, StringComparison.InvariantCultureIgnoreCase))
                 {
                     // Note: to trigger this operation from the Alerts view in Cosmos DB, based on the number of throttle requests
-                    if (currentThrouput / 2 >= _minAuthorizedRu)
+                    if (currentThroughput / 2 >= _minAuthorizedRu)
                     {
-                        newThroughput = currentThrouput / 2;
+                        newThroughput = currentThroughput / 2;
                     }
-                    else if (currentThrouput - 1 >= _minAuthorizedRu)
+                    else if (currentThroughput - 1 >= _minAuthorizedRu)
                     {
-                        newThroughput = currentThrouput - 1;
+                        newThroughput = currentThroughput - 1;
                     }
                     else
                     {
